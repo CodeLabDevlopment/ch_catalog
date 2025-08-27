@@ -4,7 +4,6 @@ import com.coffeehub.catalog_ms.infrastructure.web.response.v1.ProductDetails;
 import com.coffeehub.catalog_ms.infrastructure.web.response.v1.ProductResponseList;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,12 +21,7 @@ public interface ProductRoutesV1 {
 
     @Operation(summary = "List Products", description = "Retrieve a paginated list of products with optional search filtering.")
     @ApiResponse(responseCode = "200", description = "Successfully retrieved list of products")
-    @Parameters(value = {
-            @Parameter(name = "search", description = "Optional search term to filter products by name or description", required = false),
-            @Parameter(name = "page", description = "Page number for pagination (0-based)", required = false),
-            @Parameter(name = "size", description = "Number of items per page for pagination", required = false),
-            @Parameter(name = "sort", description = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.", required = false)
-    })
+    @Parameter(name = "search", description = "Optional search term to filter products by name or description", required = false)
     @GetMapping("/list")
     ResponseEntity<Page<ProductResponseList>> listProducts(@RequestParam(required = false) String search, Pageable pageable);
 
