@@ -3,8 +3,41 @@ server:
 spring:
   application:
     name: catalog-ms
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      password: password
+  cloud:
+    config:
+      fail-fast: true
+    stream:
+      bindings:
+        fromStockService-in-0:
+          destination: updateCatalog
+          content-type: application/json
+          group: ${spring.application.name}
+      rabbit:
+        bindings:
+          fromStockService-in-0:
+            consumer:
+              auto-bind-dlq: true
+              republish-to-dlq: true
+              transacted: true
+              binding-routing-key: updateCatalog
 feign:
   client:
     config:
       stock-ms:
         url: ${STOCK_MS_URL:http://localhost:8080/api/v1/product}
+
+logging:
+  level:
+    com.coffeehub: DEBUG
