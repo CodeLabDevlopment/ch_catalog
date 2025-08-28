@@ -1,7 +1,7 @@
 package com.coffeehub.catalog_ms.infrastructure.web.routes;
 
-import com.coffeehub.catalog_ms.infrastructure.web.response.v1.ProductDetails;
-import com.coffeehub.catalog_ms.infrastructure.web.response.v1.ProductResponseList;
+import com.coffeehub.catalog_ms.infrastructure.web.response.ProductDetails;
+import com.coffeehub.catalog_ms.infrastructure.web.response.ProductResponseList;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/api/v1/product")
-@Tag(name = "Product V1", description = "Open access endpoints on products")
-public interface ProductRoutesV1 {
+@Tag(name = "Product", description = "Open access endpoints on products")
+public interface ProductRoutes {
 
     @Operation(summary = "List Products", description = "Retrieve a paginated list of products with optional search filtering.")
     @ApiResponse(responseCode = "200", description = "Successfully retrieved list of products")

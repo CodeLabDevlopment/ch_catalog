@@ -1,12 +1,12 @@
-package com.coffeehub.catalog_ms.infrastructure.web.controller.v1;
+package com.coffeehub.catalog_ms.infrastructure.web.controller;
 
 import com.coffeehub.catalog_ms.application.usecases.product.FindByProductIdCase;
 import com.coffeehub.catalog_ms.application.usecases.product.ListProductsCase;
 import com.coffeehub.catalog_ms.domain.model.Product;
 import com.coffeehub.catalog_ms.infrastructure.mapper.ProductMapper;
-import com.coffeehub.catalog_ms.infrastructure.web.response.v1.ProductDetails;
-import com.coffeehub.catalog_ms.infrastructure.web.response.v1.ProductResponseList;
-import com.coffeehub.catalog_ms.infrastructure.web.routes.ProductRoutesV1;
+import com.coffeehub.catalog_ms.infrastructure.web.response.ProductDetails;
+import com.coffeehub.catalog_ms.infrastructure.web.response.ProductResponseList;
+import com.coffeehub.catalog_ms.infrastructure.web.routes.ProductRoutes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class ProductControllerV1 implements ProductRoutesV1 {
+public class ProductController implements ProductRoutes {
 
     private final FindByProductIdCase findProductByIdCase;
     private final ListProductsCase getProductsCase;
