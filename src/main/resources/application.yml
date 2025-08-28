@@ -1,9 +1,10 @@
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT:8082}
 spring:
   application:
     name: catalog-ms
-  data:
-    mongodb:
-      uri: mongodb://catalog_db:password@localhost:27017/catalog_db?authSource=admin
-      database: catalog_db
+feign:
+  client:
+    config:
+      stock-ms:
+        url: ${STOCK_MS_URL:http://localhost:8080/api/v1/product}
