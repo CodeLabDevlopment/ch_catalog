@@ -1,5 +1,6 @@
 package com.coffeehub.catalog_ms.infrastructure.usecases;
 
+import com.coffeehub.catalog_ms.application.gateway.CacheGateway;
 import com.coffeehub.catalog_ms.application.gateway.LogsGateway;
 import com.coffeehub.catalog_ms.application.gateway.StockGateway;
 import com.coffeehub.catalog_ms.application.usecases.product.FindByProductIdCase;
@@ -11,13 +12,13 @@ import org.springframework.context.annotation.Configuration;
 public class ProductUseCase {
 
     @Bean
-    public FindByProductIdCase findProductByIdCase(StockGateway stockGateway, LogsGateway logsGateway) {
-        return new FindByProductIdCase(stockGateway, logsGateway);
+    public FindByProductIdCase findProductByIdCase(StockGateway stockGateway, LogsGateway logsGateway, CacheGateway cacheGateway) {
+        return new FindByProductIdCase(stockGateway, logsGateway, cacheGateway);
     }
 
     @Bean
-    public ListProductsCase getProductsCase(StockGateway stockGateway, LogsGateway logsGateway) {
-        return new ListProductsCase(stockGateway, logsGateway);
+    public ListProductsCase getProductsCase(StockGateway stockGateway, LogsGateway logsGateway, CacheGateway cacheGateway) {
+        return new ListProductsCase(stockGateway, logsGateway, cacheGateway);
     }
 
 }
