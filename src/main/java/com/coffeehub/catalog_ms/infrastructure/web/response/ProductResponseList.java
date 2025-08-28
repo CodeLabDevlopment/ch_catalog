@@ -1,4 +1,4 @@
-package com.coffeehub.catalog_ms.infrastructure.web.response.v1;
+package com.coffeehub.catalog_ms.infrastructure.web.response;
 
 import com.coffeehub.catalog_ms.domain.enums.ProductCategory;
 import com.coffeehub.catalog_ms.domain.enums.ProductStatus;
